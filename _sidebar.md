@@ -1,21 +1,22 @@
-# 面试博客
+* [首页](/)
 
-- [首页](/)
+* 刷题
 
-## 刷题
+  * 数组
+    * [两数之和](algorithm/array/array.md)
 
-- [数组](algorithm/array.md)
-- [动态规划](algorithm/dp.md)
+  * 二叉树
+    * [前序遍历](algorithm/tree/preorder.md)
 
-## 八股
+  * 动态规划
+    * [背包问题](algorithm/dp/dp.md)
 
-- [操作系统](knowledge/os.md)
-- [计算机网络](knowledge/network.md)
+* 八股文
+  * [操作系统](knowledge/os.md)
+  * [计算机网络](knowledge/network.md)
 
-## 面经
+* 面经
+  * [某公司面经](experience/interview1.md)
 
-- [某公司面经](experience/interview1.md)
-
-## 日记
-
-- [2026-03-05](diary/2026-03-05.md)
+* 日记
+  * [2026-03-05](diary/2026-03-05.md)

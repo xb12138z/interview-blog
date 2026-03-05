@@ -2,8 +2,7 @@
 
 * 刷题
 
-  * 数组
-    * [两数之和](algorithm/array/array.md)
+  * [数组](algorithm/array/array.md)
 
   * 二叉树
     * [前序遍历](algorithm/tree/preorder.md)
@@ -38,4 +37,4 @@
   * [C++聊天项目]
 
 * 日记
-  * [2026-03-05](diary/2026-03-05.md)
+  * [2026-03-05](diary/2026.3.5.md)

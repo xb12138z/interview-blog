@@ -63,7 +63,7 @@ arg 在 process(arg) 语境中变成了左值，即使 forwardExample(20) 传递
 std::forward<T>(arg) 通过 引用折叠（Reference Collapsing）和 类型推导 来决定参数是否应该保留右值特性。
 
 |T 传递的类型|	T&& 推导后|	std::forward<T>(arg)| 结果|
-|---|---|
+|---|---|---|---|
 |int|	int&&	|右值 |int&&|
 |int&|	int& && → int&|	左值 |int&|
 

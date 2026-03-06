@@ -98,3 +98,60 @@ int main() {
 |虚函数	|产生虚函数表指针（vptr）|
 |虚继承|	产生虚基类指针|
 |空类|	最小为1字节，确保地址独立|
+
+
+## C++ 中一个空类（没有成员变量和函数），默认有哪几个函数，请写出函数定义?
+
+编译器默认生成的函数
+
+|函数|	是否默认生成	|用途说明|
+|---|---|---|
+|默认构造函数|	✅	|Empty()，用于默认构造对象|
+|析构函数|	✅	|~Empty()，用于销毁对象|
+|拷贝构造函数|	✅	|Empty(const Empty&)，用于复制对象|
+|拷贝赋值运算符|	✅	|Empty& operator=(const Empty&)，用于赋值|
+|移动构造函数（C++11 起）|	✅	|Empty(Empty&&)，用于移动语义|
+|移动赋值运算符（C++11 起）|	✅|	Empty& operator=(Empty&&)，用于移动赋值|
+
+展开写法（模拟编译器默认生成）
+```cpp
+class Empty {
+public:
+    // 默认构造函数
+    Empty() = default;
+
+    // 析构函数
+    ~Empty() = default;
+
+    // 拷贝构造函数
+    Empty(const Empty& other) = default; 
+
+    // 拷贝赋值运算符
+    Empty& operator=(const Empty& other) = default;
+
+    // 移动构造函数
+    Empty(Empty&& other) = default;
+
+    // 移动赋值运算符
+    Empty& operator=(Empty&& other) = default;
+};
+
+#include <iostream>
+#include <utility>
+class Empty{};
+int main() {
+    Empty e1;
+    Empty e2 = e1;
+    e2 = e1;
+
+
+    Empty* p = new Empty(); 
+    delete p;
+
+    Empty e3 = std::move(e1);
+    e3 = std::move(e2);
+    return 0;
+}
+```
+总结：
+    空类默认有 6 个特殊函数（构造、析构、拷贝/移动构造、拷贝/移动赋值），除非你显示禁用或重写，否则编译器会默认生成它们（符合 Rule of Zero）。

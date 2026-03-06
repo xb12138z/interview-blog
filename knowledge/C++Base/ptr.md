@@ -12,9 +12,9 @@
 
 3.std::weak_ptr<T>（弱引用）依赖 shared_ptr，不会增加引用计数。用于解决 shared_ptr 循环引用问题。可通过 lock() 获取 shared_ptr，判断对象是否仍然有效。  
 
-std::shared_ptr<T> 原理是什么?，请手动实现
+## std::shared_ptr<T> 原理是什么?，请手动实现
 
-4.原理分析
+原理分析
 
 每个 shared_ptr 实例指向同一对象的其他 shared_ptr 实例共享一个计数器。当创建新 shared_ptr 或拷贝现有 shared_ptr 时，计数器增加。
 
@@ -22,8 +22,7 @@ std::shared_ptr<T> 原理是什么?，请手动实现
 
 这种机制确保了对象在最后一个 shared_ptr 销毁时被释放，防止了内存泄漏。特别适合多线程或复杂数据结构中需要共享对象的场景。
 
-## 手写 shared_ptr 实现
-以下是手写 shared_ptr 的简化实现，适合面试场景：
+手写 shared_ptr 实现 , 以下是手写 shared_ptr 的简化实现，适合面试场景：
 ```cpp
 #include <iostream>
 #include <stdexcept>
@@ -219,12 +218,12 @@ const 和 volatile 限定：标准 shared_ptr 支持 const 指针，但简化版
 不完全类型：标准 shared_ptr 可用于不完全类型，但需要确保析构时类型完整。
 
 表格：shared_ptr 关键操作与行为
-操作	影响	备注
-构造函数	计数初始化为 1	若指针为 null，则计数为 0
-拷贝构造函数	计数增加	共享所有权
-移动构造函数	转移所有权，源设为 null	计数不变
-析构函数	计数减少，若为 0 则删除	确保对象生命周期正确
-赋值运算符	更新计数，处理自赋值	优化相同对象情况
+|操作	       |   影响	                  |       备注|
+|构造函数	    |计数初始化为 1 	       | 若指针为 null，则计数为 0|
+|拷贝构造函数	|  计数增加	               |    共享所有权|
+|移动构造函数   |转移所有权，源设为 null	|     计数不变|
+|析构函数	    |计数减少，若为 0 则删除	| 确保对象生命周期正确|
+|赋值运算符	    |更新计数，处理自赋值	    |   优化相同对象情况|
 + 
 
 ## std::make_shared 相比 std::shared_ptr<T>(new T(args...)) 有什么好处？
@@ -232,21 +231,15 @@ const 和 volatile 限定：标准 shared_ptr 支持 const 指针，但简化版
 
 避免额外的内存分配  
 
-std::make_shared 会在一次内存分配中同时分配对象本体和引用计数，而 std::shared_ptr<T>(new T(args...)) 需要两次分配（一次给 T，一次给 shared_ptr 的控制块）。
-
-这不仅减少了 malloc/free 的开销，还能提高缓存命中率。
+std::make_shared 会在一次内存分配中同时分配对象本体和引用计数，而 std::shared_ptr<T>(new T(args...)) 需要两次分配（一次给 T，一次给 shared_ptr 的控制块）。这不仅减少了 malloc/free 的开销，还能提高缓存命中率。
 
 减少异常安全问题  
 
-std::shared_ptr<T>(new T(args...)) 是两个独立的操作，new T(args...) 可能会抛出异常，而 shared_ptr 还未成功构造，导致内存泄漏。
-
-std::make_shared 进行的是原子操作，不存在这个问题。
+std::shared_ptr<T>(new T(args...)) 是两个独立的操作，new T(args...) 可能会抛出异常，而 shared_ptr 还未成功构造，导致内存泄漏。std::make_shared 进行的是原子操作，不存在这个问题。
 
 更高效的引用计数管理  
 
-由于 std::make_shared 在一个内存块中存储对象和引用计数，指针访问时可以减少额外的缓存访问，提高运行效率。
-
-std::shared_ptr<T>(new T(args...)) 由于分开分配对象和控制块，会导致额外的指针间接访问。
+由于 std::make_shared 在一个内存块中存储对象和引用计数，指针访问时可以减少额外的缓存访问，提高运行效率。std::shared_ptr<T>(new T(args...)) 由于分开分配对象和控制块，会导致额外的指针间接访问。
 
 代码更简洁  
 

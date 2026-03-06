@@ -178,7 +178,7 @@ extern "C" {
 
 extern "C" int global_var;
 整个头文件（推荐做法）
-
+```cpp
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -188,6 +188,7 @@ void func();
 #ifdef __cplusplus
 }
 #endif
+```
 ❌ 不适用于
 
 C++ 类（C 语言不支持类）
@@ -223,10 +224,11 @@ extern "C" class Test {  // ❌ C++ 类不能加 extern "C"
 extern "C" void func(int);  // ✅ 可用
 extern "C" void func(double);  // ❌ 不支持重载
 7. 总结
-特性	描述
-作用	让 C++ 代码调用 C 语言代码，避免名称修饰
-原理	关闭 C++ 的 Name Mangling，使 C++ 符号与 C 语言兼容
-常见用法	extern "C" {} 包围 C 语言函数声明
-适用范围	函数、变量，但 不能用于类或函数重载
-常见应用	调用 C 语言库（如 OpenCV、FFmpeg），C++ 代码被 C 语言调用
-extern "C" 是 C++ 和 C 语言混合编程的关键工具，使两种语言可以互相调用，提高代码的可扩展性和兼容性。
+|特性	|描述|
+|---|---|
+|作用	|让 C++ 代码调用 C 语言代码，避免名称修饰|
+|原理	|关闭 C++ 的 Name Mangling，使 C++ 符号与 C 语言兼容|
+|常见用法	|extern "C" {} 包围 C 语言函数声明|
+|适用范围	|函数、变量，但 不能用于类或函数重载|
+|常见应用	|调用 C 语言库（如 OpenCV、FFmpeg），C++ 代码被 C 语言调用|
+|extern "C" |是 C++ 和 C 语言混合编程的关键工具，使两种语言可以互相调用，提高代码的可扩展性和兼容性。|

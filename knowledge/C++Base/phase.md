@@ -54,10 +54,70 @@ std::vector<int> vec(1000);
 vec.clear();  // size 变 0，但 capacity 仍然是 1000
 vec.shrink_to_fit();  // 可能减少 capacity
 ```
-🚀 最佳实践：
+最佳实践：
 ```cpp
 if (vec.capacity() > vec.size() * 2) {
     vec.shrink_to_fit(); // 仅在容量远大于实际使用时调用
 }
 ```
 📌 总结：clear() 只清空数据但不释放内存，shrink_to_fit() 可尝试释放多余容量。
+
+
+## sizeof语句和strlen语句
+
+一、基本概念对比表格
+
+|对比项|	sizeof|	strlen|
+|---|---|
+|类型|	编译期运算符（operator）|	运行时函数（#include <cstring>）|
+|返回类型|	size_t（表示字节数）|	size_t（表示字符串长度）|
+|参数要求|	变量 / 类型	|char*（C风格字符串）|
+|是否包含 \0|	包含（数组大小）|	不包含（仅字符个数）|
+|计算时间点|	编译阶段完成|	运行阶段，从头遍历直到 \0|
+
+一般sizeof用于数组长度的计算，而strlen用于计算string长度
+
+二、代码案例
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char str[] = "Hello";
+    char* p = str;
+
+    cout << "sizeof(str): " << sizeof(str) << endl;   // 6（包含 \0）
+    cout << "strlen(str): " << strlen(str) << endl;   // 5
+
+    cout << "sizeof(p): " << sizeof(p) << endl;       // 8（64 位系统下指针大小）
+    cout << "strlen(p): " << strlen(p) << endl;       // 5
+
+    return 0;
+}
+```
+
+三、数组在传参时退化为指针
+```cpp
+void test(char str[]) {
+    cout << "sizeof(str) in func: " << sizeof(str) << endl; // 实际为指针大小，非数组大小
+    cout << "strlen(str) in func: " << strlen(str) << endl;
+}
+
+int main() {
+    char str[] = "Hello";
+    test(str);  // str 会退化为 char* 类型传入函数
+    return 0;
+}
+```
+
+注意：  在函数参数中，char str[] 实际等价于 char* str，sizeof(str) 返回的是指针大小（如 8），而非数组大小。
+
+四、常见误区
+
+|写法|	错误原因|
+|--
+|sizeof(char*)| 得到长度	实际返回的是指针大小，不是字符串长度|
+|strlen(uninit_ptr)|	空指针或未初始化指针，可能导致崩溃|
+|strlen("abc\0def")	|只会计算 abc，长度为 3|
+|strlen(nullptr)	|调用会导致程序崩溃|

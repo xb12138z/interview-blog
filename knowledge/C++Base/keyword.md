@@ -3,14 +3,17 @@
 ## mutable关键字
 
 1.mutable 关键字的作用
+
 mutable 关键字用于 允许在 const 成员函数或 const 对象中修改该成员变量。适用于类的成员变量，通常用于 缓存、延迟计算、日志记录等场景。
 
-2. mutable 的使用场景
+2.mutable 的使用场景
+
 在 const 成员函数中修改变量，与 std::thread 结合，修改 lambda 捕获的变量
 
 用于缓存计算结果，提高程序性能 用于调试或日志记录，不影响对象的逻辑常量性
 
-3. mutable 示例代码
+3.mutable 示例代码
+
 1：const 成员函数修改变量
 ```cpp
 #include <iostream>
@@ -33,7 +36,9 @@ int main() {
 输出：
 
 Counter: 1
+
 Counter: 2
+
 2：用于 Lambda 捕获
 ```cpp
 #include <iostream>
@@ -57,8 +62,11 @@ int main() {
 }
 ```
 输出：
+
 Count in lambda: 1
+
 Count in lambda: 2
+
 4. 面试常见问题
 ✅ Q1: mutable 关键字的作用是什么？
 

@@ -100,7 +100,7 @@ void func(double);  // 可能变为 _Z4funcd
 ```
 如果 C++ 直接调用 C 语言函数（没有 extern "C"），链接时找不到匹配的名称，会报 undefined reference 错误。
 
-3. extern "C" 的使用方式
+3.extern "C" 的使用方式
 （1）C++ 调用 C 语言代码
 C 语言文件（c_lib.c）：
 ```cpp
@@ -109,7 +109,7 @@ C 语言文件（c_lib.c）：
 void c_function() {
     printf("This is a C function\n");
 }
-C 头文件（c_lib.h）：
+//C 头文件（c_lib.h）：
 #ifndef C_LIB_H
 #define C_LIB_H
 
@@ -124,7 +124,7 @@ void c_function();
 #endif
 
 #endif
-C++ 代码（main.cpp）：
+//C++ 代码（main.cpp）：
 #include "c_lib.h"
 
 int main() {
@@ -132,10 +132,9 @@ int main() {
     return 0;
 }
 ```
-关键点：
-头文件使用 extern "C" 避免 C++ 进行名称修饰(Name Mangling)。
 
-#ifdef __cplusplus 使得 C 语言代码也能包含此头文件，不会出错。
+关键点：
+头文件使用 extern "C" 避免 C++ 进行名称修饰(Name Mangling)。#ifdef __cplusplus 使得 C 语言代码也能包含此头文件，不会出错。
 
 （2）C 语言调用 C++ 代码
 C++ 代码（cpp_lib.cpp）：
@@ -145,7 +144,7 @@ C++ 代码（cpp_lib.cpp）：
 extern "C" void cpp_function() {
     std::cout << "This is a C++ function\n";
 }
-C 代码（main.c）：
+//C 代码（main.c）：
 
 #include <iostream>
 
@@ -157,27 +156,20 @@ extern "C" void cpp_function() {
 
 C 语言不能直接识别 extern "C"，但 C++ 端定义函数时必须加 extern "C"，这样 C 语言才能正常链接。
 
-4. extern "C" 适用于哪些情况？
-✅ 适用于
+4.extern "C" 适用于哪些情况？
+适用于
 
-函数
+(1)函数：extern "C" void func();
 
-extern "C" void func();
-
-多个函数
-
-extern "C" {
+(2)多个函数： extern "C" {
     void func1();
     void func2();
 }
 
+(3)变量
 
+(4)extern "C" int global_var;整个头文件（推荐做法）
 
-
-变量
-
-extern "C" int global_var;
-整个头文件（推荐做法）
 ```cpp
 #ifdef __cplusplus
 extern "C" {
@@ -189,41 +181,38 @@ void func();
 }
 #endif
 ```
-❌ 不适用于
+不适用于：
 
-C++ 类（C 语言不支持类）
+(1)C++ 类（C 语言不支持类）
 
-函数重载（C 语言不支持重载）
+(2)函数重载（C 语言不支持重载）
 
-5. extern "C" 的实际应用场景
+5.extern "C" 的实际应用场景
 （1）C++ 调用 C 库（如 OpenCV、FFmpeg）
 extern "C" {
 #include <opencv2/opencv.hpp>
 }
+
 （2）封装 C 接口，提供给 Python、Rust 等其他语言使用
 extern "C" int add(int a, int b) {
     return a + b;
 }
-（3）跨语言混合编程（C 与 C++ 混合）
-嵌入式开发
 
-操作系统开发
+（3）跨语言混合编程（C 与 C++ 混合） 嵌入式开发   操作系统开发
 
-6. extern "C" 相关注意事项
-✅ 正确使用方式
+6.extern "C" 相关注意事项
+
+正确使用方式：
+
 ✔ extern "C" 只能用于 全局作用域，不能嵌套到局部变量或函数内部。✔ 用 #ifdef __cplusplus 确保头文件可在 C 和 C++ 两端兼容。✔ 适用于 函数和变量，但不能用于 类和重载函数。
 
-⚠️ 常见错误
-❌ 错误示例：使用 extern "C" 修饰 C++ 类
+常见错误：
 
-extern "C" class Test {  // ❌ C++ 类不能加 extern "C"
-    int x;
-};
-❌ 错误示例：使用 extern "C" 修饰重载函数
+使用 extern "C" 修饰 C++ 类  或者  使用 extern "C" 修饰重载函数
 
-extern "C" void func(int);  // ✅ 可用
-extern "C" void func(double);  // ❌ 不支持重载
-7. 总结
+
+7.总结
+
 |特性	|描述|
 |---|---|
 |作用	|让 C++ 代码调用 C 语言代码，避免名称修饰|

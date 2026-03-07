@@ -230,6 +230,7 @@ int main() {
 }
 ```
 3.const_cast（去除 const/volatile 限定符）
+
 3.1 正确用法：修改可变数据
 如果对象本身不是 const，通过 const_cast 去除指针的 const 属性。
 ```cpp

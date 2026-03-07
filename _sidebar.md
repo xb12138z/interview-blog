@@ -1,14 +1,18 @@
 * [首页](/)
 
 * 刷题
-
-  * [数组](algorithm/array/array.md)
+  * 数组
+    * [数组](algorithm/array.md)
 
   * 二叉树
     * [前序遍历](algorithm/tree/preorder.md)
 
   * 动态规划
     * [背包问题](algorithm/dp/dp.md)
+  
+  * 哈希表
+    * [哈希表](algorithm/hash.md)
+
 
 * 八股文
   * C++后端基础

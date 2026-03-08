@@ -116,8 +116,8 @@ int main() {
 四、常见误区
 
 |写法|	错误原因|
-|--
-|sizeof(char*)| 得到长度	实际返回的是指针大小，不是字符串长度|
+|---|---|
+|sizeof(char*) 得到长度	|实际返回的是指针大小，不是字符串长度|
 |strlen(uninit_ptr)|	空指针或未初始化指针，可能导致崩溃|
 |strlen("abc\0def")	|只会计算 abc，长度为 3|
 |strlen(nullptr)	|调用会导致程序崩溃|

@@ -167,6 +167,7 @@ lambda 能不能作为回调函数？
 可以，但如果带有捕获，需包装成 std::function。
 
 9.推荐使用场景
+
 |场景|	推荐使用|
 |---|---|
 |高性能计算、模板泛化|	函数对象|
@@ -193,16 +194,33 @@ MyFunction<void()> f = [] { std::cout << "Hello\n"; };
 f(); // 调用 lambda
 ```
 核心结构拆解
-1️⃣ 抽象接口类
-template<typename R, typename... Args>
+
+function可以被视为由下面三个类组合而成：抽象接口类（将所有传入函数都包装成invoke，保证函数调用的统一性）【只是抽象接口，具体实现在下一个类】。包装任意类型的桥接类（负责接收一个任意的可调用的对象，把他包装成ICallable类）。类型擦除容器类（将传入的函数利用上一个类进行完整的包装，持有包装好的类的唯一指针，之后重写（）让大家可以直接使用）
+
+1️.抽象接口类
+```cpp
+template<typename R, typename... Args>//返回类型R，参数类型ARGs
 struct ICallable {
+    // 纯虚函数：定义“调用行为”的统一规范
+    // 要求实现类必须提供：接收 Args 类型参数、返回 R 类型的 invoke 方法
     virtual R invoke(Args&&... args) = 0;
     virtual ~ICallable() {}
 };
+```
 定义通用行为：invoke()，隐藏真实类型
 
-2️⃣ 包装任意类型的桥接类
-template<typename T, typename R, typename... Args>
+invoke函数三大优势：
+
+(1)语法统一：消除普通函数、成员函数、Lambda 等可调用对象的调用语法差异，降低编码和记忆成本。
+
+(2)泛型友好：极大简化泛型编程，无需针对不同可调用对象写分支判断，让模板更通用、简洁。
+
+(3)现代特性：原生支持 constexpr、完美转发，适配现代 C++ 的高性能、编译期计算需求。
+
+
+2️.包装任意类型的桥接类
+```cpp
+template<typename T, typename R, typename... Args>//T为任意可调用对象
 class CallableImpl : public ICallable<R, Args...> {
     T callable;
 public:
@@ -211,9 +229,11 @@ public:
         return callable(std::forward<Args>(args)...);
     }
 };
+```
 通过模板实现对任意可调用对象的包装
 
-3️⃣ 类型擦除容器类 MyFunction
+3️.类型擦除容器类 MyFunction
+```cpp
 template<typename R, typename... Args>
 class MyFunction<R(Args...)> {
     std::unique_ptr<ICallable<R, Args...>> funcPtr;
@@ -228,11 +248,11 @@ public:
         return funcPtr->invoke(std::forward<Args>(args)...);
     }
 };
-将任意类型“抹去”，封装进统一接口
+```
+将任意类型“抹去”，封装进统一接口 使用智能指针自动释放内存
 
-使用智能指针自动释放内存
-
-五、完整代码示例
+完整代码示例:
+```cpp
 #include <iostream>
 #include <memory>
 
@@ -268,7 +288,7 @@ public:
         return funcPtr->invoke(std::forward<Args>(args)...);
     }
 };
-六、测试示例
+
 void greet() {
     std::cout << "Hello from function\n";
 }
@@ -282,10 +302,14 @@ int main() {
     f2();  // 输出: Hello from function
     std::cout << "Add: " << add(2, 3) << std::endl; // 输出: 5
 }
+```
+
 七、总结
-关键词	含义
-类型擦除	屏蔽类型细节，统一接口
-接口类	抽象基类，提供统一方法
-模板适配器	用模板包装不同类型
-虚函数机制	运行时多态关键
-智能指针	管理擦除对象的生命周期
+
+|关键词|	含义|
+|---|---|
+|类型擦除	|屏蔽类型细节，统一接口|
+|接口类	|抽象基类，提供统一方法|
+|模板适配器|	用模板包装不同类型|
+|虚函数机制	|运行时多态关键|
+|智能指针	|管理擦除对象的生命周期|

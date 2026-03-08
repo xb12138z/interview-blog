@@ -188,6 +188,7 @@ void func();
 (2)函数重载（C 语言不支持重载）
 
 5.extern "C" 的实际应用场景
+
 （1）C++ 调用 C 库（如 OpenCV、FFmpeg）
 extern "C" {
 #include <opencv2/opencv.hpp>
@@ -221,3 +222,99 @@ extern "C" int add(int a, int b) {
 |适用范围	|函数、变量，但 不能用于类或函数重载|
 |常见应用	|调用 C 语言库（如 OpenCV、FFmpeg），C++ 代码被 C 语言调用|
 |extern "C" |是 C++ 和 C 语言混合编程的关键工具，使两种语言可以互相调用，提高代码的可扩展性和兼容性。|
+
+
+## C++ 重定义问题全面解析：
+
+inline vs static + namespace + extern
+
+一、函数重定义问题的根源
+
+在 C++ 中，如果头文件中直接定义函数，且被多个.cpp文件包含，会导致链接时重定义错误（multiple definition）。
+
+示例：
+```cpp
+// math_utils.h
+int add(int a, int b) {
+    return a + b;
+}
+```
+此头文件若被多个 .cpp 包含，链接时将出现重定义错误。
+
+二、使用 static 解决重定义
+```cpp
+// math_utils.h
+static int add(int a, int b) {
+    return a + b;
+}
+static 将函数限制在当前翻译单元（.cpp）中，生成独立副本。
+```
+解决重定义，但无法共享函数定义。
+
+三、使用 inline 解决重定义
+```cpp
+// math_utils.h
+inline int add(int a, int b) {
+    return a + b;
+}
+```
+inline 告诉链接器：多个翻译单元中出现相同函数定义是可以的。
+
+链接时只保留一个函数定义。
+
+四、结合 namespace 更进一步
+ 
+场景一：static + 命名空间
+```cpp
+namespace math {
+    static int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+每个 .cpp 中仍是独立版本。
+
+场景二：inline + 命名空间  推荐写法
+```cpp
+namespace math {//namespace就像唯一标识符，允许一个类中有不同namespace包含的同名函数。函数调用时指明对应的namespace即可调用对应的函数
+    inline int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+被多个 .cpp 文件引用时也不会报错。 常用于标准库，例如 std::chrono。
+
+场景三：匿名命名空间等价于 static
+```cpp
+namespace {
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+等价于 static 函数，仅在本翻译单元可见。
+
+五、标准写法推荐模板
+```cpp
+#pragma once
+namespace utils {
+    inline int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+
+一句话总结:
+static 是“躲起来”，inline 是“统一合并”，namespace 是“分类管理”。  组合使用 inline + namespace，是现代 C++ 项目最推荐的头文件函数定义方式。
+
+附： extern 避免重定义
+extern的作用是：声明一个函数或变量在别的.cpp文件中定义，它本身不参与定义。
+```cpp
+// math_utils.h
+extern int add(int, int);  // 声明
+
+// math_utils.cpp
+int add(int a, int b) {     // 定义
+    return a + b;
+}
+```

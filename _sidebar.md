@@ -16,21 +16,21 @@
 
 * 八股文
   * C++后端基础
-    *[智能指针相关](knowledge/C++Base/ptr.md)
-    *[内存相关](knowledge/C++Base/memory.md)
-    *[class相关问题](knowledge/C++Base/class.md)
-    *[类型转化](knowledge/C++Base/typeTrans.md)
-    *[关键字](knowledge/C++Base/keyword.md)
-    *[可调用对象](knowledge/C++Base/func_object.md)
-    *[大小端字节序](knowledge/C++Base/endianness.md)
-    *[语句详解](knowledge/C++Base/phase.md)
-    *[extern、inline](knowledge/C++Base/extern.md)
-    *[深拷贝、浅拷贝](knowledge/C++Base/copy.md)
-    *[自动类型推断](knowledge/C++Base/auto.md)
-    *[动态库、静态库](knowledge/C++Base/lib.md)
+    * [智能指针相关](knowledge/C++Base/ptr.md)
+    * [内存相关](knowledge/C++Base/memory.md)
+    * [class相关问题](knowledge/C++Base/class.md)
+    * [类型转化](knowledge/C++Base/typeTrans.md)
+    * [关键字](knowledge/C++Base/keyword.md)
+    * [可调用对象](knowledge/C++Base/func_object.md)
+    * [大小端字节序](knowledge/C++Base/endianness.md)
+    * [语句详解](knowledge/C++Base/phase.md)
+    * [extern、inline](knowledge/C++Base/extern.md)
+    * [深拷贝、浅拷贝](knowledge/C++Base/copy.md)
+    * [自动类型推断](knowledge/C++Base/auto.md)
+    * [动态库、静态库](knowledge/C++Base/lib.md)
   * [操作系统](knowledge/os.md)
   * [计算机网络]
-    *[TCP/IP](knowledge/network//network.md)
+    * [TCP/IP](knowledge/network//network.md)
 
 * 面经
   * [某公司面经](experience/interview1.md)

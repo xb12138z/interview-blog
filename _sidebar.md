@@ -32,7 +32,7 @@
   * [操作系统](knowledge/os.md)
   
   * 计算机网络
-    * [TCP/IP](knowledge/network.md)
+    * [TCP/IP](knowledge/network/network.md)
 
 * 面经
   * [某公司面经](experience/interview1.md)

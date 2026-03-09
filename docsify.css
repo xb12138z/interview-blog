@@ -1,0 +1,18 @@
+/* Docsify 视觉优化：更简洁的侧边栏和更易读的字体 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* 侧边栏更紧凑 */
+.sidebar {
+  padding-top: 0.75rem;
+}
+
+.sidebar li {
+  line-height: 1.6;
+}
+
+/* 当前页面高亮 */
+.sidebar .active a {
+  font-weight: 700;
+}

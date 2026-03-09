@@ -190,8 +190,28 @@ std::function：封装任意可调用对象
 
 支持任意函数对象、lambda、函数指针等封装与调用：
 ```cpp
-MyFunction<void()> f = [] { std::cout << "Hello\n"; };
-f(); // 调用 lambda
+#include <iostream>
+#include <functional>
+
+// 不同类型的可调用对象
+void free_func(int a) { std::cout << "自由函数: " << a << std::endl; }
+struct LambdaObj { void operator()(int a) { std::cout << "lambda: " << a << std::endl; } };
+
+int main() {
+    // 类型擦除：不同类型的可调用对象，都被擦除为std::function<void(int)>
+    std::function<void(int)> f;
+    
+    f = free_func;   // 绑定自由函数
+    f(10);           // 输出：自由函数: 10
+    
+    f = LambdaObj(); // 绑定仿函数对象
+    f(20);           // 输出：lambda: 20
+    
+    f = [](int a) { std::cout << "临时lambda: " << a << std::endl; };
+    f(30);           // 输出：临时lambda: 30
+    
+    return 0;
+}
 ```
 核心结构拆解
 

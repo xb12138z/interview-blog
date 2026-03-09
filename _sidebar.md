@@ -29,7 +29,7 @@
     *[自动类型推断](knowledge/C++Base/auto.md)
     *[动态库、静态库](knowledge/C++Base/lib.md)
   * [操作系统](knowledge/os.md)
-  * [计算机网络](knowledge/network.md)
+  * [计算机网络](knowledge/network//network.md)
 
 * 面经
   * [某公司面经](experience/interview1.md)

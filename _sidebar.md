@@ -4,15 +4,21 @@
   * 数组
     * [数组](algorithm/array.md)
 
+  * 哈希表
+    * [哈希表](algorithm/hash.md)
+
+  * 双指针
+    * [双指针](algorithm/pointers.md)
+  
+  * 滑动窗口
+    * [滑动窗口](algorithm/windows.md)
+
   * 二叉树
     * [前序遍历](algorithm/tree/preorder.md)
 
   * 动态规划
     * [背包问题](algorithm/dp/dp.md)
   
-  * 哈希表
-    * [哈希表](algorithm/hash.md)
-
 
 * 八股文
   * C++后端基础
@@ -36,6 +42,10 @@
 
   * 数据库
     * [数据库](knowledge/mysql/mysql.md)
+
+  * Redis
+    * [需求分析](knowledge/redis/needed.md)
+    * [Redis](knowledge/redis/redis.md)
 
 * 面经
   * [某公司面经](experience/interview1.md)

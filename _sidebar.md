@@ -35,7 +35,8 @@
     * [自动类型推断](knowledge/C++Base/auto.md)
     * [动态库、静态库](knowledge/C++Base/lib.md)
   
-  * [操作系统](knowledge/os.md)
+  * 操作系统
+    * [操作系统](knowledge/os/os.md)
   
   * 计算机网络
     * [TCP/IP](knowledge/network/network.md)

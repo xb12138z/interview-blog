@@ -13,6 +13,9 @@
   * 滑动窗口
     * [滑动窗口](algorithm/windows.md)
 
+  * 回溯
+    * [回溯](algorithm/backtrack.md)
+
   * 二叉树
     * [前序遍历](algorithm/tree/preorder.md)
 
@@ -42,17 +45,30 @@
     * [TCP/IP](knowledge/network/network.md)
 
   * 数据库
+    * [需求分析](knowledge/mysql/needed.md)
     * [数据库](knowledge/mysql/mysql.md)
 
   * Redis
     * [需求分析](knowledge/redis/needed.md)
     * [Redis](knowledge/redis/redis.md)
 
+  * 消息队列
+    * [消息队列](knowledge/MQ/MQ.md)
+  
+  * 分布式
+    * [分布式](knowledge/Distributed/Distributed.md)
+
+  * 场景题
+    * [场景题](knowledge/场景题.md)
+
 * 面经
   * [某公司面经](experience/interview1.md)
 
 *项目部分
-  * [C++聊天项目]
+  * C++聊天项目
+    * [项目思路](experience/项目思路总结.md)
+    * [项目场景](experience/项目问题总结.md)
+    * [网络相关](experience/boostasio.md)
 
 * 日记
   * [2026-03-05](diary/2026.3.5.md)

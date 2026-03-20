@@ -1,10 +1,8 @@
-/* Docsify visual polish for a cleaner, more structured sidebar */
-
 :root {
   --sidebar-accent: #2f6fed;
   --sidebar-accent-soft: #eaf1ff;
   --sidebar-text: #2b2f36;
-  --sidebar-subtext: #566070;
+  --sidebar-subtext: #5f6b7a;
   --sidebar-border: #e6eaf2;
   --sidebar-hover: #f5f8ff;
 }
@@ -15,9 +13,7 @@ body {
 }
 
 .sidebar {
-  padding-top: 0.9rem;
-  padding-left: 0.9rem;
-  padding-right: 0.9rem;
+  padding: 0.9rem;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -33,147 +29,156 @@ body {
   padding-bottom: 1rem;
 }
 
-.sidebar ul,
-.sidebar ol {
+.sidebar-nav ul {
   margin: 0;
   padding-left: 0;
 }
 
-.sidebar li {
+.sidebar-nav > ul > li {
   list-style: none;
-  line-height: 1.55;
+  margin-bottom: 0.75rem;
 }
 
-/* Top-level expandable groups */
-.sidebar details {
-  margin: 0 0 0.7rem 0;
-  border: 1px solid var(--sidebar-border);
-  border-radius: 12px;
-  background: #fff;
-  overflow: hidden;
-}
-
-.sidebar details[open] {
-  box-shadow: 0 8px 24px rgba(27, 39, 94, 0.06);
-}
-
-.sidebar summary {
+/* Top-level groups */
+.sidebar-nav > ul > li > a,
+.sidebar-nav > ul > li > p {
   display: block;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  padding: 0.85rem 2.2rem 0.85rem 0.95rem;
-  font-size: 17px;
-  font-weight: 800;
+  margin: 0;
+  padding: 0.88rem 0.95rem;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 14px;
+  background: #fff;
   color: var(--sidebar-text);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
   letter-spacing: 0.01em;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.sidebar-nav > ul > li > a:hover,
+.sidebar-nav > ul > li > p:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-accent);
+  box-shadow: 0 8px 20px rgba(27, 39, 94, 0.05);
+}
+
+/* Home */
+.sidebar-nav > ul > li:first-child > a {
+  background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+  color: #17a56b;
+}
+
+/* Second level */
+.sidebar-nav > ul > li > ul {
+  margin-top: 0.45rem;
+  margin-left: 0.4rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #edf1f7;
+}
+
+.sidebar-nav > ul > li > ul > li {
+  list-style: none;
+  margin: 0.15rem 0;
+}
+
+.sidebar-nav > ul > li > ul > li > a,
+.sidebar-nav > ul > li > ul > li > p {
+  display: block;
+  margin: 0;
+  padding: 0.38rem 0.5rem;
+  color: var(--sidebar-subtext);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
   transition: background-color 0.18s ease, color 0.18s ease;
 }
 
-.sidebar summary:hover {
+.sidebar-nav > ul > li > ul > li > a:hover,
+.sidebar-nav > ul > li > ul > li > p:hover {
   background: var(--sidebar-hover);
   color: var(--sidebar-accent);
 }
 
-.sidebar summary::-webkit-details-marker {
-  display: none;
+/* Third level */
+.sidebar-nav > ul > li > ul > li > ul {
+  margin-top: 0.15rem;
+  margin-left: 0.3rem;
+  padding-left: 0.85rem;
 }
 
-.sidebar summary::after {
-  content: "▸";
-  position: absolute;
-  right: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: #7d8696;
-  transition: transform 0.18s ease, color 0.18s ease;
+.sidebar-nav > ul > li > ul > li > ul > li {
+  list-style: disc;
+  color: #d7deea;
+  margin: 0.08rem 0;
 }
 
-.sidebar details[open] > summary {
-  background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
-  color: var(--sidebar-accent);
-  border-bottom: 1px solid var(--sidebar-border);
-}
-
-.sidebar details[open] > summary::after {
-  transform: translateY(-50%) rotate(90deg);
-  color: var(--sidebar-accent);
-}
-
-/* Group content */
-.sidebar details > ul {
-  padding: 0.65rem 0.65rem 0.75rem 0.75rem;
-}
-
-/* Second-level titles */
-.sidebar details > ul > li {
-  margin: 0.25rem 0 0.7rem 0;
-}
-
-.sidebar details > ul > li > strong {
+.sidebar-nav > ul > li > ul > li > ul > li > a {
   display: block;
-  margin-bottom: 0.3rem;
-  padding-left: 0.35rem;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--sidebar-subtext);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-/* Third-level item list */
-.sidebar details > ul > li > ul {
-  margin-left: 0.15rem;
-  padding-left: 0.75rem;
-  border-left: 2px solid #edf1f7;
-}
-
-.sidebar details > ul > li > ul > li {
-  margin: 0.15rem 0;
-}
-
-.sidebar a {
-  display: block;
-  padding: 0.38rem 0.55rem;
+  padding: 0.32rem 0.55rem;
   border-radius: 8px;
   color: var(--sidebar-text);
-  text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
   transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
-.sidebar a:hover {
+.sidebar-nav > ul > li > ul > li > ul > li > a:hover {
   background: var(--sidebar-hover);
   color: var(--sidebar-accent);
   transform: translateX(2px);
 }
 
-/* Active link */
-.sidebar li.active > a,
-.sidebar a.active {
+/* Current page */
+.sidebar li.active > a {
   background: var(--sidebar-accent-soft);
   color: var(--sidebar-accent);
   font-weight: 700;
 }
 
-/* Home link */
-.sidebar > .sidebar-nav > ul > li:first-child > a {
-  margin-bottom: 0.9rem;
-  border: 1px solid var(--sidebar-border);
-  border-radius: 12px;
-  font-weight: 700;
+/* Current document headings injected by Docsify */
+.app-sub-sidebar {
+  margin-top: 0.35rem;
+  margin-left: 0.3rem;
+  padding-left: 0.85rem;
+  border-left: 2px dashed #dce6fb;
 }
 
-/* Better spacing on smaller screens */
+.app-sub-sidebar li {
+  list-style: none;
+  margin: 0.05rem 0;
+}
+
+.app-sub-sidebar a {
+  display: block;
+  padding: 0.24rem 0.5rem;
+  border-radius: 8px;
+  color: #6d7890;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.app-sub-sidebar a:hover {
+  background: #f7faff;
+  color: var(--sidebar-accent);
+}
+
+.app-sub-sidebar .active > a,
+.app-sub-sidebar a.active {
+  color: var(--sidebar-accent);
+  font-weight: 700;
+  background: #f4f8ff;
+}
+
 @media (max-width: 768px) {
   .sidebar {
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
+    padding: 0.75rem;
   }
 
-  .sidebar summary {
-    font-size: 16px;
-    padding: 0.8rem 2rem 0.8rem 0.85rem;
+  .sidebar-nav > ul > li > a,
+  .sidebar-nav > ul > li > p {
+    font-size: 17px;
+    padding: 0.8rem 0.9rem;
   }
 }

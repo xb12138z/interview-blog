@@ -1,18 +1,179 @@
-/* Docsify 视觉优化：更简洁的侧边栏和更易读的字体 */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+/* Docsify visual polish for a cleaner, more structured sidebar */
+
+:root {
+  --sidebar-accent: #2f6fed;
+  --sidebar-accent-soft: #eaf1ff;
+  --sidebar-text: #2b2f36;
+  --sidebar-subtext: #566070;
+  --sidebar-border: #e6eaf2;
+  --sidebar-hover: #f5f8ff;
 }
 
-/* 侧边栏更紧凑 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--sidebar-text);
+}
+
 .sidebar {
-  padding-top: 0.75rem;
+  padding-top: 0.9rem;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #d7ddeb;
+  border-radius: 999px;
+}
+
+.sidebar-nav {
+  padding-bottom: 1rem;
+}
+
+.sidebar ul,
+.sidebar ol {
+  margin: 0;
+  padding-left: 0;
 }
 
 .sidebar li {
-  line-height: 1.6;
+  list-style: none;
+  line-height: 1.55;
 }
 
-/* 当前页面高亮 */
-.sidebar .active a {
+/* Top-level expandable groups */
+.sidebar details {
+  margin: 0 0 0.7rem 0;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.sidebar details[open] {
+  box-shadow: 0 8px 24px rgba(27, 39, 94, 0.06);
+}
+
+.sidebar summary {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding: 0.85rem 2.2rem 0.85rem 0.95rem;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--sidebar-text);
+  letter-spacing: 0.01em;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.sidebar summary:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-accent);
+}
+
+.sidebar summary::-webkit-details-marker {
+  display: none;
+}
+
+.sidebar summary::after {
+  content: "▸";
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #7d8696;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.sidebar details[open] > summary {
+  background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+  color: var(--sidebar-accent);
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar details[open] > summary::after {
+  transform: translateY(-50%) rotate(90deg);
+  color: var(--sidebar-accent);
+}
+
+/* Group content */
+.sidebar details > ul {
+  padding: 0.65rem 0.65rem 0.75rem 0.75rem;
+}
+
+/* Second-level titles */
+.sidebar details > ul > li {
+  margin: 0.25rem 0 0.7rem 0;
+}
+
+.sidebar details > ul > li > strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  padding-left: 0.35rem;
+  font-size: 13px;
   font-weight: 700;
+  color: var(--sidebar-subtext);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Third-level item list */
+.sidebar details > ul > li > ul {
+  margin-left: 0.15rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid #edf1f7;
+}
+
+.sidebar details > ul > li > ul > li {
+  margin: 0.15rem 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.38rem 0.55rem;
+  border-radius: 8px;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.sidebar a:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-accent);
+  transform: translateX(2px);
+}
+
+/* Active link */
+.sidebar li.active > a,
+.sidebar a.active {
+  background: var(--sidebar-accent-soft);
+  color: var(--sidebar-accent);
+  font-weight: 700;
+}
+
+/* Home link */
+.sidebar > .sidebar-nav > ul > li:first-child > a {
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* Better spacing on smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+
+  .sidebar summary {
+    font-size: 16px;
+    padding: 0.8rem 2rem 0.8rem 0.85rem;
+  }
 }

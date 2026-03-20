@@ -136,6 +136,26 @@ body {
   font-weight: 700;
 }
 
+/* Collapse plugin compatibility */
+.sidebar-nav .collapse {
+  margin-top: 0.45rem;
+}
+
+.sidebar-nav .app-sub-sidebar,
+.sidebar-nav .collapse > ul {
+  margin-top: 0.15rem;
+}
+
+.sidebar-nav li .sidebar-nav__sub-arrow,
+.sidebar-nav li .collapse-arrow {
+  color: #7f8aa0;
+}
+
+.sidebar-nav li.open > a,
+.sidebar-nav li.open > p {
+  color: var(--sidebar-accent);
+}
+
 /* Current document headings injected by Docsify */
 .app-sub-sidebar {
   margin-top: 0.35rem;

@@ -1,20 +1,27 @@
 * [首页](/)
 
 * 刷题
-  * 数组
+  * 数组相关
     * [数组](algorithm/array.md)
-  * 哈希表
     * [哈希表](algorithm/hash.md)
-  * 双指针
-    * [双指针](algorithm/pointers.md)
-  * 滑动窗口
+    * [双指针](algorithm/two_pointers.md)
     * [滑动窗口](algorithm/windows.md)
-  * 回溯
+    * [前缀和](algorithm/presum.md)
+  * 数据结构
+    * [链表](algorithm/list.md)
+    * [树](algorithm/tree.md)
+    * [图](algorithm/graph.md)
+    * [栈](algorithm/stack.md)
+    * [堆](algorithm/priority_queue.md)
+  * 算法相关
+    * [二分查找](algorithm/find.md)
     * [回溯](algorithm/backtrack.md)
-  * 二叉树
-    * [前序遍历](algorithm/tree/preorder.md)
-  * 动态规划
-    * [背包问题](algorithm/dp/dp.md)
+    * [贪心](algorithm/greedy.md)
+    * [背包问题](algorithm/dp.md)
+
+  * [架构设计](algorithm/architecture.md)
+  * [sql语句基础](algorithm/sql.md)
+
 
 * 八股文
   * C++后端基础
@@ -41,8 +48,10 @@
     * [需求分析](knowledge/redis/needed.md)
     * [Redis](knowledge/redis/redis.md)
   * 消息队列
+    * [需求分析](knowledge/MQ/needed.md)
     * [消息队列](knowledge/MQ/MQ.md)
   * 分布式
+    * [需求分析](knowledge/Distributed/needed.md)
     * [分布式](knowledge/Distributed/Distributed.md)
   * 场景题
     * [场景题](knowledge/场景题.md)
@@ -55,6 +64,10 @@
     * [项目思路](experience/项目思路总结.md)
     * [项目场景](experience/项目问题总结.md)
     * [网络相关](experience/boostasio.md)
+  * 大模型项目
+    * [项目思路]
+    * [项目场景]
+    * [大模型相关]
 
 * 日记
   * [2026-03-05](diary/2026.3.5.md)

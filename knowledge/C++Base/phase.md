@@ -68,7 +68,7 @@ if (vec.capacity() > vec.size() * 2) {
 一、基本概念对比表格
 
 |对比项|	sizeof|	strlen|
-|---|---|
+|---|---|---|
 |类型|	编译期运算符（operator）|	运行时函数（#include <cstring>）|
 |返回类型|	size_t（表示字节数）|	size_t（表示字符串长度）|
 |参数要求|	变量 / 类型	|char*（C风格字符串）|

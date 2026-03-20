@@ -2,20 +2,20 @@
 
 ## inline失效场景
 
-1.inline 作用
+1.inline 作用  
 提示编译器内联展开函数，减少调用开销。适用于小型、简单、频繁调用的函数。
 
 inline 仅是建议，最终由编译器决定是否展开。
 
-2.inline 失效场景
-2.1 递归函数
+2.inline 失效场景  
+2.1 递归函数  
 递归调用次数未知，编译器无法展开。
 ```cpp
 inline int factorial(int n) {
     return (n <= 1) ? 1 : n * factorial(n - 1); // 递归调用
 }
 ```
-2.2 函数体过大
+2.2 函数体过大  
 代码膨胀，影响性能，编译器可能忽略 inline。
 ```cpp
 inline int largeFunction(int a, int b) {
@@ -26,7 +26,7 @@ inline int largeFunction(int a, int b) {
     return sum;
 }
 ```
-2.3 复杂控制流（循环、条件判断）
+2.3 复杂控制流（循环、条件判断）  
 影响优化，编译器可能不内联。
 ```cpp
 inline int compute(int a, int b) {
@@ -42,7 +42,7 @@ inline int compute(int a, int b) {
     return b;
 }
 ```
-2.4 虚函数
+2.4 虚函数  
 依赖动态绑定，运行时才确定调用目标，无法内联。
 ```cpp
 class Base {
@@ -52,7 +52,7 @@ public:
     }
 };
 ```
-2.5 函数指针调用
+2.5 函数指针调用  
 编译器无法在编译期确定具体目标函数，无法展开。
 ```cpp
 inline int add(int a, int b) {
@@ -61,7 +61,7 @@ inline int add(int a, int b) {
 int (*funcPtr)(int, int) = add; // 通过函数指针调用
 int result = funcPtr(2, 3); // 无法内联
 ```
-2.6 取函数地址
+2.6 取函数地址  
 &func 需要函数实体，编译器不会内联。
 ```cpp
 inline int multiply(int a, int b) {
@@ -69,13 +69,13 @@ inline int multiply(int a, int b) {
 }
 int (*ptr)(int, int) = &multiply; // 获取地址
 ```
-2.7 动态库中的 inline
+2.7 动态库中的 inline  
 共享库函数地址运行时确定，通常不会内联。
 
-3. inline 适用场景
+3. inline 适用场景  
 ✅ 短小、简单、频繁调用的函数，如 getter/setter。❌ 递归、虚函数、大函数、复杂控制流。
 
-4. 面试高频问题
+4. 面试高频问题  
 inline 是否保证函数内联？ 否，编译器决定。
 
 递归函数为什么不能内联？ 调用次数不确定。
@@ -84,12 +84,12 @@ inline 是否保证函数内联？ 否，编译器决定。
 
 ## extern"C" 详解
 
-1.什么是 extern "C"？
-作用：
+1.什么是 extern "C"？  
+作用：  
 extern "C" 是 C++ 提供的关键字，用于告诉编译器按照 C 语言方式编译和链接函数或变量，以解决 C++ 名称修饰（Name Mangling） 带来的兼容性问题。
 
-2.为什么需要 extern "C"？
-C++ 名称修饰（Name Mangling）问题
+2.为什么需要 extern "C"？  
+C++ 名称修饰（Name Mangling）问题  
 C++ 支持函数重载，所以编译器会在编译时修改函数名，加入参数类型信息。C 语言不支持重载，其函数名在编译后不会被修饰。
 
 示例（C++ 代码编译后）：
@@ -100,8 +100,8 @@ void func(double);  // 可能变为 _Z4funcd
 ```
 如果 C++ 直接调用 C 语言函数（没有 extern "C"），链接时找不到匹配的名称，会报 undefined reference 错误。
 
-3.extern "C" 的使用方式
-（1）C++ 调用 C 语言代码
+3.extern "C" 的使用方式  
+（1）C++ 调用 C 语言代码  
 C 语言文件（c_lib.c）：
 ```cpp
 #include <stdio.h>
@@ -133,11 +133,11 @@ int main() {
 }
 ```
 
-关键点：
+关键点：  
 头文件使用 extern "C" 避免 C++ 进行名称修饰(Name Mangling)。#ifdef __cplusplus 使得 C 语言代码也能包含此头文件，不会出错。
 
-（2）C 语言调用 C++ 代码
-C++ 代码（cpp_lib.cpp）：
+（2）C 语言调用 C++ 代码  
+C++ 代码（cpp_lib.cpp）：  
 ```cpp
 #include <iostream>
 
@@ -304,10 +304,10 @@ namespace utils {
 }
 ```
 
-一句话总结:
+一句话总结:  
 static 是“躲起来”，inline 是“统一合并”，namespace 是“分类管理”。  组合使用 inline + namespace，是现代 C++ 项目最推荐的头文件函数定义方式。
 
-附： extern 避免重定义
+附： extern 避免重定义  
 extern的作用是：声明一个函数或变量在别的.cpp文件中定义，它本身不参与定义。
 ```cpp
 // math_utils.h

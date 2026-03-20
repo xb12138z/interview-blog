@@ -1,7 +1,7 @@
 # 自动类型推断
 
 ## 2. auto 关键字
-2.1 什么是 auto？
+2.1 什么是 auto？  
 auto 关键字用于自动推断变量的类型，编译器根据变量的初始值自动确定其数据类型。
 
 示例
@@ -18,7 +18,7 @@ int main() {
     return 0;
 }
 ```
-2.2 auto 在容器中的应用
+2.2 auto 在容器中的应用  
 遍历 std::vector
 ```cpp
 std::vector<int> vec = {1, 2, 3, 4, 5};
@@ -35,7 +35,7 @@ for (auto v : vec) {
 ```
 auto 省略了显式的 int 声明，提高可读性。
 
-2.3 auto 与 const、引用的结合
+2.3 auto 与 const、引用的结合  
 使用 auto 推导引用
 ```cpp
 int a = 10;
@@ -51,7 +51,7 @@ const auto y = b; // y 的类型是 const int
 
 ## decltype 关键字
 
-3.1 decltype 的作用
+3.1 decltype 的作用  
 decltype 用于获取表达式的精确类型，不同于 auto，它不会立即对变量求值。
 
 示例
@@ -70,7 +70,7 @@ auto add(T1 a, T2 b) -> decltype(a + b) {//auto ... -> decltype(a + b)中auto为
 3.2 decltype 与 auto 的区别
 
 |关键字|	作用|	是否立即计算表达式|
-|---|---|
+|---|---|---|
 |auto	|根据初始化值推导类型|	是|
 |decltype	|获取表达式的类型|	否|
  
@@ -81,7 +81,7 @@ auto x = a + b;      // x 是 int，表达式 `a + b` 被计算
 decltype(a + b) y;   // y 也是 int，但不会计算 `a + b`
 ```
 
-3.3 decltype(auto)
+3.3 decltype(auto)  
 decltype(auto)可以保持表达式的所有修饰符（如const、引用等）
 
 示例

@@ -10,12 +10,12 @@
 
 2.两种链接的区别
 
-静态链接 (Static Linking)
+静态链接 (Static Linking)  
 在 编译期 将 .a 库中的代码直接打包到可执行文件
 
 不依赖外部库，可独立运行
 
-动态链接 (Dynamic Linking)
+动态链接 (Dynamic Linking)  
 在 运行期 通过 动态链接器 加载 .so/.dll 库
 
 程序中只存在函数符号的引用，而非实际代码
@@ -48,7 +48,7 @@ int main() {
 
 静态链接
 ```cpp
-g++ -c math.cpp        # 编译成 math.o
+g++ -c math.cpp        # 编译成 math.o  
 ar rcs libmath.a math.o   # 打包成静态库
 
 g++ main.cpp -L. -lmath -o app  # 链接库
@@ -73,8 +73,8 @@ export LD_LIBRARY_PATH=.          # 设置路径
 |升级维护	|需重新编译	|可单独更新|
 |共享性	|差（每个程序一份）	|好（多程序共用）|
 
-静态链接
+静态链接  
 全部打包带走，一劳永逸，但“重”
 
-动态链接
+动态链接  
 只带地址引用，运行时“借用”，更灵活

@@ -219,17 +219,17 @@ MVCC（多版本并发控制）：MySQL 实现 “读已提交”“可重复读
 **1.锁机制：解决写操作的并发问题**
 
 锁是控制并发写的核心，InnoDB 中的锁分为两类核心锁：
-（1）行级锁（InnoDB 特有，MyISAM 只有表锁）：
-共享锁（S 锁）：读操作加 S 锁，多个事务可同时加 S 锁（共享）；
-排他锁（X 锁）：写操作（增删改）加 X 锁，加了 X 锁的行，其他事务无法加 S/X 锁（排他）。
-（2）间隙锁 / Next-Key 锁（解决幻读）：
-间隙锁：锁定索引记录之间的间隙（比如 id 10 和 20 之间），防止插入新数据；
-Next-Key 锁：行锁 + 间隙锁的组合，是 InnoDB 默认的行锁算法，在 REPEATABLE READ 级别下，通过 Next-Key 锁解决了幻读问题。
+（1）行级锁（InnoDB 特有，MyISAM 只有表锁）：  
+共享锁（S 锁）：读操作加 S 锁，多个事务可同时加 S 锁（共享）；  
+排他锁（X 锁）：写操作（增删改）加 X 锁，加了 X 锁的行，其他事务无法加 S/X 锁（排他）。  
+（2）间隙锁 / Next-Key 锁（解决幻读）：  
+间隙锁：锁定索引记录之间的间隙（比如 id 10 和 20 之间），防止插入新数据；  
+Next-Key 锁：行锁 + 间隙锁的组合，是 InnoDB 默认的行锁算法，在 REPEATABLE READ 级别下，通过 Next-Key 锁解决了幻读问题。  
 
-锁的作用场景：
-写操作（update/delete/insert）默认加 X 锁，阻止其他事务同时修改同一行；
-显式加锁（如 select ... for update）会加 X 锁，select ... lock in share mode 加 S 锁；
-串行化（SERIALIZABLE）级别下，普通读操作也会加 S 锁，导致所有事务串行执行。
+锁的作用场景：  
+写操作（update/delete/insert）默认加 X 锁，阻止其他事务同时修改同一行；  
+显式加锁（如 select ... for update）会加 X 锁，select ... lock in share mode 加 S 锁；  
+串行化（SERIALIZABLE）级别下，普通读操作也会加 S 锁，导致所有事务串行执行。  
 
 **2.MVCC（多版本并发控制）：解决读操作的并发问题**
 

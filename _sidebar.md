@@ -1,157 +1,144 @@
 * [首页](/)
 
 <details>
-  <summary>刷题</summary>
-
-  <details>
-    <summary>数组</summary>
-
-  * [数组](algorithm/array.md)
-
-  </details>
-
-  <details>
-    <summary>哈希表</summary>
-
-  * [哈希表](algorithm/hash.md)
-
-  </details>
-
-  <details>
-    <summary>双指针</summary>
-
-  * [双指针](algorithm/pointers.md)
-
-  </details>
-
-  <details>
-    <summary>滑动窗口</summary>
-
-  * [滑动窗口](algorithm/windows.md)
-
-  </details>
-
-  <details>
-    <summary>回溯</summary>
-
-  * [回溯](algorithm/backtrack.md)
-
-  </details>
-
-  <details>
-    <summary>二叉树</summary>
-
-  * [前序遍历](algorithm/tree/preorder.md)
-
-  </details>
-
-  <details>
-    <summary>动态规划</summary>
-
-  * [背包问题](algorithm/dp/dp.md)
-
-  </details>
-
+  <summary><strong>刷题</strong></summary>
+  <ul>
+    <li>
+      <strong>数组</strong>
+      <ul>
+        <li><a href="#/algorithm/array.md">数组</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>哈希表</strong>
+      <ul>
+        <li><a href="#/algorithm/hash.md">哈希表</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>双指针</strong>
+      <ul>
+        <li><a href="#/algorithm/pointers.md">双指针</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>滑动窗口</strong>
+      <ul>
+        <li><a href="#/algorithm/windows.md">滑动窗口</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>回溯</strong>
+      <ul>
+        <li><a href="#/algorithm/backtrack.md">回溯</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>二叉树</strong>
+      <ul>
+        <li><a href="#/algorithm/tree/preorder.md">前序遍历</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>动态规划</strong>
+      <ul>
+        <li><a href="#/algorithm/dp/dp.md">背包问题</a></li>
+      </ul>
+    </li>
+  </ul>
 </details>
 
 <details>
-  <summary>八股文</summary>
-
-  <details>
-    <summary>C++后端基础</summary>
-
-  * [智能指针相关](knowledge/C++Base/ptr.md)
-  * [内存相关](knowledge/C++Base/memory.md)
-  * [class相关问题](knowledge/C++Base/class.md)
-  * [类型转化](knowledge/C++Base/typeTrans.md)
-  * [关键字](knowledge/C++Base/keyword.md)
-  * [可调用对象](knowledge/C++Base/func_object.md)
-  * [大小端字节序](knowledge/C++Base/endianness.md)
-  * [语句详解](knowledge/C++Base/phase.md)
-  * [extern、inline](knowledge/C++Base/extern.md)
-  * [深拷贝、浅拷贝](knowledge/C++Base/copy.md)
-  * [自动类型推断](knowledge/C++Base/auto.md)
-  * [动态库、静态库](knowledge/C++Base/lib.md)
-
-  </details>
-
-  <details>
-    <summary>操作系统</summary>
-
-  * [操作系统](knowledge/os/os.md)
-
-  </details>
-
-  <details>
-    <summary>计算机网络</summary>
-
-  * [TCP/IP](knowledge/network/network.md)
-
-  </details>
-
-  <details>
-    <summary>数据库</summary>
-
-  * [需求分析](knowledge/mysql/needed.md)
-  * [数据库](knowledge/mysql/mysql.md)
-
-  </details>
-
-  <details>
-    <summary>Redis</summary>
-
-  * [需求分析](knowledge/redis/needed.md)
-  * [Redis](knowledge/redis/redis.md)
-
-  </details>
-
-  <details>
-    <summary>消息队列</summary>
-
-  * [消息队列](knowledge/MQ/MQ.md)
-
-  </details>
-
-  <details>
-    <summary>分布式</summary>
-
-  * [分布式](knowledge/Distributed/Distributed.md)
-
-  </details>
-
-  <details>
-    <summary>场景题</summary>
-
-  * [场景题](knowledge/场景题.md)
-
-  </details>
-
+  <summary><strong>八股文</strong></summary>
+  <ul>
+    <li>
+      <strong>C++后端基础</strong>
+      <ul>
+        <li><a href="#/knowledge/C++Base/ptr.md">智能指针相关</a></li>
+        <li><a href="#/knowledge/C++Base/memory.md">内存相关</a></li>
+        <li><a href="#/knowledge/C++Base/class.md">class相关问题</a></li>
+        <li><a href="#/knowledge/C++Base/typeTrans.md">类型转化</a></li>
+        <li><a href="#/knowledge/C++Base/keyword.md">关键字</a></li>
+        <li><a href="#/knowledge/C++Base/func_object.md">可调用对象</a></li>
+        <li><a href="#/knowledge/C++Base/endianness.md">大小端字节序</a></li>
+        <li><a href="#/knowledge/C++Base/phase.md">语句详解</a></li>
+        <li><a href="#/knowledge/C++Base/extern.md">extern、inline</a></li>
+        <li><a href="#/knowledge/C++Base/copy.md">深拷贝、浅拷贝</a></li>
+        <li><a href="#/knowledge/C++Base/auto.md">自动类型推断</a></li>
+        <li><a href="#/knowledge/C++Base/lib.md">动态库、静态库</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>操作系统</strong>
+      <ul>
+        <li><a href="#/knowledge/os/os.md">操作系统</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>计算机网络</strong>
+      <ul>
+        <li><a href="#/knowledge/network/network.md">TCP/IP</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>数据库</strong>
+      <ul>
+        <li><a href="#/knowledge/mysql/needed.md">需求分析</a></li>
+        <li><a href="#/knowledge/mysql/mysql.md">数据库</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>Redis</strong>
+      <ul>
+        <li><a href="#/knowledge/redis/needed.md">需求分析</a></li>
+        <li><a href="#/knowledge/redis/redis.md">Redis</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>消息队列</strong>
+      <ul>
+        <li><a href="#/knowledge/MQ/MQ.md">消息队列</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>分布式</strong>
+      <ul>
+        <li><a href="#/knowledge/Distributed/Distributed.md">分布式</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>场景题</strong>
+      <ul>
+        <li><a href="#/knowledge/场景题.md">场景题</a></li>
+      </ul>
+    </li>
+  </ul>
 </details>
 
 <details>
-  <summary>面经</summary>
-
-  * [某公司面经](experience/interview1.md)
-
+  <summary><strong>面经</strong></summary>
+  <ul>
+    <li><a href="#/experience/interview1.md">某公司面经</a></li>
+  </ul>
 </details>
 
 <details>
-  <summary>项目部分</summary>
-
-  <details>
-    <summary>C++聊天项目</summary>
-
-  * [项目思路](experience/项目思路总结.md)
-  * [项目场景](experience/项目问题总结.md)
-  * [网络相关](experience/boostasio.md)
-
-  </details>
-
+  <summary><strong>项目部分</strong></summary>
+  <ul>
+    <li>
+      <strong>C++聊天项目</strong>
+      <ul>
+        <li><a href="#/experience/项目思路总结.md">项目思路</a></li>
+        <li><a href="#/experience/项目问题总结.md">项目场景</a></li>
+        <li><a href="#/experience/boostasio.md">网络相关</a></li>
+      </ul>
+    </li>
+  </ul>
 </details>
 
 <details>
-  <summary>日记</summary>
-
-  * [2026-03-05](diary/2026.3.5.md)
-
+  <summary><strong>日记</strong></summary>
+  <ul>
+    <li><a href="#/diary/2026.3.5.md">2026-03-05</a></li>
+  </ul>
 </details>

@@ -68,6 +68,12 @@
     * [项目思路]
     * [项目场景]
     * [大模型相关]
+  * 项目手撕基础
+    * [通信架构]
+    * [Redis]
+    * [数据库](experience/手撕项目/mysql.md)
+    * [mysql连接池](experience/手撕项目/mysqlpool.md)
+    * [agent模型]
 
 * 日记
   * [2026-03-05](diary/2026.3.5.md)
